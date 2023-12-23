@@ -28,17 +28,14 @@ import kotlin.text.*
 
 fun sockMerchant(n: Int, ar: Array<Int>): Int {
     // Write your code here
-    var iterator: Int = 0
-    for (numbers1 in ar){
-        for (numbers2 in ar){
-            if (numbers1==numbers2){
-                ar.drop(numbers1)
-                ar.drop(numbers2)
-                iterator++
-            }
-        }
+    val colorCounts = ar.groupingBy { it }.eachCount()
+
+    var pairs = 0
+    for (count in colorCounts.values) {
+        pairs += count / 2
     }
-    return iterator
+
+    return pairs
 }
 
 fun main(args: Array<String>) {
